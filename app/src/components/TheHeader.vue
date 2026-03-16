@@ -12,7 +12,7 @@
 
 <style>
     .header {
-        background: #000;
+        background:red;
         color: #fff;
     }
 </style>
