@@ -1,11 +1,19 @@
 <template>
-  <TheHeader 
-    v-if="showHeader"
-  />
-  <div v-show="showName">
-    Nome: {{ firstName }} <br>
-    Sobrenome:{{ lastname }}
+  <TheHeader/>
+  <div >
+    <button @click="onclick()">
+        enviar
+    </button>
 
+  </div>
+
+  <div @mouseover="onMouseover" class="box-interativa">
+
+       MOUSEOVER
+  </div>
+
+  <div @mouseenter="onMouseenter" class="box">
+      VEM QUE TEM
   </div>
   <img 
 
@@ -29,11 +37,22 @@ export default {
   },
   data(){
     return {
-      showHeader: true,
-      firstName: 'Jhon',
-      lastname: 'Snow',
-      showName: true
+      
+      
 
+    }
+  },
+  methods: {
+    onclick(){
+      console.log('click');
+    },
+
+    onMouseover(){
+      console.log("mouseoverrrr");
+    },
+
+    onMouseenter(){
+      console.log("MOUSEENTER'-''");
     }
   }
 }
@@ -47,5 +66,19 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.box-interativa {
+  padding: 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  cursor: pointer; /* Ajuda o usuário a entender que é interativo */
+}
+
+.box{
+    padding: 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  cursor: pointer; 
 }
 </style>
