@@ -11,13 +11,19 @@
   <span v-else>Usuário inexistente</span>
 --> 
 
-<div>
+ <!-- lops de repetição e a diretiva v-bind.
 
-  <div v-for="obj in todos" v-bind:key="obj.id">
-    {{ obj.title }}
+<div>
+  <div v-for="(obj,index) in todos" v-bind:key="obj.id">
+
+     <img v-bind:src="obj.img" v-bind:alt="placeholder">
+     {{ index }} - {{ obj.title }}
   </div>
 
 </div>
+
+--> 
+
   <br>
 
   <img alt="Vue logo" src="./assets/logo.png">
@@ -41,18 +47,21 @@ export default {
       showHeader: false,
      // nome: 'Olavo',
      // acesso: 'aaaaaa',
+     placeholder: 'Dinamico',
       todos: [
   {
     "userId": 1,
     "id": 1,
     "title": "delectus aut autem",
-    "completed": false
+    "completed": false,
+    "img": 'https://placehold.co/100x100',
   },
   {
     "userId": 1,
     "id": 2,
     "title": "quis ut nam facilis et officia qui",
-    "completed": false
+    "completed": false,
+    "img": 'https://placehold.co/200x200',
   },
   {
     "userId": 1,
