@@ -1,5 +1,7 @@
 <template>
-<Header> HelloWorld Vue </Header> 
+
+    <Header> HelloWorld Vue </Header>
+     
 </template>
 
 <script>

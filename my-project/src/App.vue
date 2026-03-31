@@ -1,43 +1,78 @@
 <template>
-
-  <TheHeader 
-    v-show="showHeader"
-  />
-
+  <TheHeader v-show="showHeader" />
+  
+<!--  CONDICIONAIS
   <div>
-    Nome:{{ nome }}
+    Nome: {{ nome }}
   </div>
 
-  <span v-if=" acesso === 'admin'"> Usuario Admin </span>
+  <span v-if="acesso === 'admin'"> Usuário Admin </span>
+  <span v-else-if="acesso === 'usuario'"> Usuário Normal</span>
+  <span v-else>Usuário inexistente</span>
+--> 
 
-  <spanv v-else-if="acesso === 'usuario'"> Usiario Normal</spanv>
+<div>
 
-  <spanv v-else>Usuario inexistente</spanv>
+  <div v-for="obj in todos" v-bind:key="obj.id">
+    {{ obj.title }}
+  </div>
+
+</div>
   <br>
-  
 
   <img alt="Vue logo" src="./assets/logo.png">
   <HelloWorld msg="Welcome to Your Vue.js App"/>
-
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import TheHeader from './components/TheHeader.vue'; 
+import TheHeader from './components/TheHeader.vue'
+ 
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
-    TheHeader
+    TheHeader,
+    
   },
-  data(){
-    return{
-
+  data() {
+    return {
       showHeader: false,
-      nome: 'Olavo',
-      acesso:'aaaaaa'
-      
+     // nome: 'Olavo',
+     // acesso: 'aaaaaa',
+      todos: [
+  {
+    "userId": 1,
+    "id": 1,
+    "title": "delectus aut autem",
+    "completed": false
+  },
+  {
+    "userId": 1,
+    "id": 2,
+    "title": "quis ut nam facilis et officia qui",
+    "completed": false
+  },
+  {
+    "userId": 1,
+    "id": 3,
+    "title": "fugiat veniam minus",
+    "completed": false
+  },
+  {
+    "userId": 1,
+    "id": 4,
+    "title": "et porro tempora",
+    "completed": true
+  },
+  {
+    "userId": 1,
+    "id": 5,
+    "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
+    "completed": false
+  }
+]
     }
   }
 }
