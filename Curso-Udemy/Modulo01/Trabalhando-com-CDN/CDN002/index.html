@@ -11,16 +11,31 @@
 </head>
 <body>
   <div id="app">
+    <div class="cart"> cart: {{ cart }}</div>
+
     <div class="product-display">
       <div class="product-container">
         <div class="product-image">
           <img :src="image" alt="camisa azul">
         </div>
         <div class="product-info">
+               <!-- INFO PRODUTO-->
           <h1> {{ product_title }} </h1>
-          <p v-if="inStock"> In Stock</p> 
+          <p v-if="inStock > 10"</p> In Stock</p> 
+          <p v-else-if="inStock <= 10 && inStock > 1">Almost of out</p>
           <p v-else>Out of Stock</p>
-          <!-- INFO PRODUTO-->
+          <ul>
+            <li v-for="detail in details">
+              {{ detail }}
+            </li>
+          </ul>
+          <!-- podemos abreviar o v-on para @NOME-DO-EVENTO -->
+          <div v-for="variant in variants" :key="variant.id" @mouseover="changeImage(variant.image)"> 
+            {{ variant.color }}
+          </div>
+           <!-- v-on é uma diretiva para trabalhar com eventos -->
+          <button class="button" v-on:click="addToCart"> Add To Cart</button>
+          
         </div>
       </div>
     </div>
@@ -33,12 +48,31 @@
 
     createApp({
       setup() {
+        const cart = ref(0);
+        const addToCart = () => {
+          // Como estamos no escopo de script devemos utilizar o value pois esta função é lida como um objeto por isso usamos cart.value diferente de quando estamos no DOM.
+          cart.value += 1
+        }
+
+        const image = ref("assets/images/foto.png");
+        // Função anonima () => {}
+        const changeImage = (variantImage) => {
+          image.value = variantImage
+        }
+
+
         const message = ref('Hello vue!')
         return {
           product_title: ref('T-Shirt'),
-          image: ref("assets/images/foto.png"),
-          inStock: ref(true)
-
+          image,
+          inStock: ref(15),
+          details: ['50% Cotton', '30% Polyester', '20% Wool'],
+          variants: [
+            {id: 1, color:'Blue', image: "assets/images/foto.png" },
+            {id: 2, color: 'green', image: "assets/images/t-shirt-green.png" }],
+          cart,
+          addToCart,
+          changeImage
         }
       }
     }).mount('#app')

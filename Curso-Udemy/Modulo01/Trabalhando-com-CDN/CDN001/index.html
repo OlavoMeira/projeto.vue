@@ -11,9 +11,14 @@
   
   <div id="app">
    <h1>  {{ message }} </h1>
-  <input type="text" v-model="message">
-  </div>
+   <!-- O v-model cria uma ligação de dados bidirecional entre um elemento do formulário (ou componente) e uma variável do seu script. Exemplo: >>
 
+   quando a variável muda → o campo atualiza
+   quando o usuário digita → a variável atualiza 
+   -->
+  <input v-bind:type="texto" v-model="message">
+  </div>
+  <!--A diretiva v-bind:atributo  podemos abreviar para :atributo e ele é uma diretiva para tornar qualquer atributo dinamico aperte f12 para verificar a sua execução.-->
   <script>
     const { createApp, ref } = Vue
 
@@ -21,7 +26,8 @@
       setup() {
         const message = ref('Hello vue!')
         return {
-          message
+          message,
+          texto: "Não temos mensagem hoje."
         }
       }
     }).mount('#app')
