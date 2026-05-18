@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                      <!-- CDN vue.js-->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+                <!-- link css3-->
+  <link rel="stylesheet" href="/Curso-Udemy/Modulo01/Trabalhando-com-CDN/CDN002/assets/styles.css">
+  <title>CDN002</title>
+</head>
+<body>
+  <div id="app">
+      <cart-display :cart="cart"></cart-display>
+      <product-display @add-to-cart="addToCart"></product-display>
+    
+  </div>
+
+
+  <!-- IMPORTE DO ARQUIVO PRINCIPAL DO VUE -->
+  <script src="./main.js"></script>
+  <script src="../components/Product.js"></script>
+   <script src="../components/Cart.js"></script>
+  <script> app.mount('#app') </script>
+</body>
+</html>
